@@ -34,10 +34,8 @@ echo '<br>';
 
 //lister les items
 $items = Item::all();
-//var_dump($items);
 foreach ($items as $item) {
     echo $item->nom;
-    $titreliste = $item->liste;
     echo'<br>';
 }
 
@@ -46,7 +44,7 @@ $id = $_GET[ 'id' ];
 $itemid = Item::where( 'id', '=', $id )->first();
 echo $itemid->nom;
 $l = $item->liste;
-echo $l;
+echo $l->titre;
 
 
 //créer un item et l'insérer dans une liste de souhaits
