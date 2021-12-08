@@ -23,6 +23,9 @@ $db->addConnection( [
 $db->setAsGlobal();
 $db->bootEloquent();
 
+echo '<!DOCTYPE html><html>';
+echo '<link href="style.css" rel="stylesheet" type="text/css">';
+echo '<body>';
 //lister liste de souhaits
 $listes = Liste::get();
 foreach ($listes as $liste) {
@@ -53,3 +56,6 @@ $i->liste_id = 3;
 $i->nom = 'Batte';
 $i->save();
 $i->delete();
+
+echo '</body>';
+echo '</html>';
