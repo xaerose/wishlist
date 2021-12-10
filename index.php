@@ -16,16 +16,8 @@ $c = [
 $cc = new \Slim\Container($c);
 $app = new \Slim\App($cc);
 $db = new DB();
-$db->addConnection( [
-    'driver' => 'mysql',
-    'host' => '127.0.0.1',
-    'database' => 'wishlist',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix' => ''
-] );
+$db->addConnection(parse_ini_file('src/conf/db.conf.ini'));
+
 $db->setAsGlobal();
 $db->bootEloquent();
 //lister liste de souhaits
