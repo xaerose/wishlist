@@ -9,7 +9,6 @@ class Liste extends \Illuminate\Database\Eloquent\Model
 
     public function items()
     {
-        echo "test";
         return $this->hasMany('mywishlist\models\Item','liste_id');
     }
 }

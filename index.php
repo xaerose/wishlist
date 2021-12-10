@@ -7,8 +7,14 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 
 
 require_once 'vendor/autoload.php';
-
-$app = new \Slim\App();
+require 'src/controleurs/ControlleurAffichage.php';
+require 'src/vues/VueParticipant.php';
+$c = [
+    'settings' => [
+        'displayErrorDetails' => true]
+];
+$cc = new \Slim\Container($c);
+$app = new \Slim\App($cc);
 $db = new DB();
 $db->addConnection( [
     'driver' => 'mysql',
@@ -22,12 +28,8 @@ $db->addConnection( [
 ] );
 $db->setAsGlobal();
 $db->bootEloquent();
-
-echo '<!DOCTYPE html><html>';
-echo '<link href="style.css" rel="stylesheet" type="text/css">';
-echo '<body>';
 //lister liste de souhaits
-$listes = Liste::get();
+/**$listes = Liste::get();
 foreach ($listes as $liste) {
     echo $liste->titre;
     echo'<br>';
@@ -55,7 +57,25 @@ $i = new Item();
 $i->liste_id = 3;
 $i->nom = 'Batte';
 $i->save();
-$i->delete();
+$i->delete();*/
 
-echo '</body>';
-echo '</html>';
+$app->get('/test/{val}', function ($rq,$rs,$args){
+    $c = new \mywishlist\controleur\ControlleurAffichage($this);
+    return $c->test($rq,$rs,$args);
+})->setName('test');
+
+
+//Affichage de la liste de la liste de souhait
+$app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes')->setName('listeDesListes');
+
+//l'affichage de la liste des items d'une liste de souhaits
+$app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
+
+//l'affichage d'un item désignée par son id
+$app->get('/item/{id}', function ($rq, $rs, $args) {
+    $c = new \mywishlist\controleur\ControlleurAffichage($this);
+    return $c->afficherUnItem($rq, $rs, $args);
+})->setName('affUnItem');
+
+
+$app->run();
