@@ -17,8 +17,11 @@ class ControlleurAffichage{
     }
 
     public function afficherUneListe(Request $rq, Response $rs, $args):Response {
-        $liste = \mywishlist\models\Liste::find( $args['noListe'] ) ;
-        $vue = new \mywishlist\vue\VueParticipant( [ $liste->toArray() ] ) ;
+        $l = \mywishlist\models\Liste::find( $args['noListe'] ) ;
+        $items = $l->items()->get() ;
+        $liste[0] = $l->toArray();
+        $liste[1] = $items; 
+        $vue = new \mywishlist\vue\VueParticipant($liste) ;
         $html=$vue->render( 2 ) ;
 
         //-----------------//
