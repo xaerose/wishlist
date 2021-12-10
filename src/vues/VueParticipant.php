@@ -35,9 +35,9 @@ class VueParticipant
         $content.="<ul>";
         $items = $this->tab[1];
         foreach ($items as $item) {
-            $url = $_SERVER[ 'DOCUMENT_ROOT' ]."/img/".$item['img'];
+            $url = "/img/".$item['img'];
             //var_dump($url);
-            $content .="<li>$item[id] : <a href=/wishlist/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr],<img src=".$url.">, $item[tarif] €</li>";
+            $content .="<li>$item[id] : <a href=/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr],<img src=".$url.">, $item[tarif] €</li>";
         }
         $content.="</ul>";
         return $content;
@@ -70,7 +70,10 @@ class VueParticipant
         $html = <<<END
             <!DOCTYPE html>
             <html>
-            <body><head><h1>My Wishlist</h1></head>
+            <body><head>
+            <link rel="stylesheet" href="/style/style.css">
+            <h1>My Wishlist</h1>
+            </head>
                 <div class="content">
                     $content
                 </div>
