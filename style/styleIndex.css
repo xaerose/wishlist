@@ -3,6 +3,7 @@ body{
     background-color: rgb(0, 0, 179);
     display: grid;
     place-items: center;
+    font-family: "Gill Sans", sans-serif;
 }
 
 .neon{
