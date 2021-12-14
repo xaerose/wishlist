@@ -16,28 +16,22 @@ class VueParticipant
     }
 
     private function htmlListes() : string{
-       // echo '<pre>';
-       // var_dump($this->tab);
         $content='';
         foreach($this->tab as $l){
-            $content .="<article>$l[no]: $l[user_id], $l[titre], $l[description], $l[expiration], $l[token]</article>";
+            $content .="<article>$l[no]: $l[user_id],<a href=/index.php/liste/$l[no]>$l[titre]</a>, $l[description], $l[expiration], $l[token]</article>";
         }  
         return "<section>$content</section>";
     }
 
     private function htmlUneListe() : string {
-       //echo '<pre>';
-       //var_dump($this->tab);
         $content='';
         $l = $this->tab[0];
-        //var_dump($l);
         $content .="<article>$l[no]: $l[user_id], $l[titre], $l[description], $l[expiration], $l[token]</article>";
         $content.="<ul>";
         $items = $this->tab[1];
         foreach ($items as $item) {
             $url = "/img/".$item['img'];
-            //var_dump($url);
-            $content .="<li>$item[id]: <a href=/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr],<img src=".$url.">, $item[tarif] €</li>";
+            $content .="<li>$item[id]: <a href=/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr], $item[tarif] €, <br> <img src=".$url."></li>";
         }
         $content.="</ul>";
         return $content;
@@ -46,11 +40,14 @@ class VueParticipant
     private function htmlUnItem() : string {
 
         $content='';
+
         foreach($this->tab as $item){
             $url = "/img/".$item['img'];
-            $content .="<article>$item[id]: $item[descr],<img src=".$url.">, $item[tarif] €</article>";
+            $content .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
         }
+
         return $content;
+
     }
 
     public function render($selecteur) {
