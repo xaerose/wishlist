@@ -5,8 +5,9 @@ body{
     place-items: center;
     font-family: "Gill Sans", sans-serif;
 }
-
 img{
     width:100%;
     max-width:100px;
+    display: block;
+    margin: auto;
 }
