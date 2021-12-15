@@ -9,6 +9,9 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 require_once 'vendor/autoload.php';
 require 'src/controleurs/ControlleurAffichage.php';
 require 'src/vues/VueParticipant.php';
+require 'src/controleurs/ControlleurConnexion.php';
+require 'src/vues/VueConnexion.php';
+
 $c = [
     'settings' => [
         'displayErrorDetails' => true]
@@ -59,6 +62,8 @@ $app->get('/test/{val}', function ($rq,$rs,$args){
 
 //Affichage de la liste de la liste de souhait
 $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes')->setName('listeDesListes');
+
+$app->get('/connexion', '\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connect');
 
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
