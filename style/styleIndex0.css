@@ -1,0 +1,50 @@
+body{
+    color:azure;
+    background-color: rgb(36, 36, 48);
+    display: grid;
+    place-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.neon{
+    font-size: 20px;
+    /* color: rgb(30, 191, 255); */
+    background-color: rgb(79, 128, 235);
+    border: 2px solid rgb(79, 128, 235);
+    color : azure;
+    text-decoration: none;
+    /* border: 4px solid rgb(30, 191, 255); */
+    padding : 5px 12px;
+    text-shadow: 0px 0px 4px black; 
+    border-radius: 2px ;
+    box-shadow:  0px 0px 6px 0 black;
+}
+
+.neon:hover,.neon:focus{
+    /* background-color: rgb(30, 191, 255); */
+    background-color: rgb(57, 99, 190);
+    border: 2px solid rgb(57, 99, 190);
+    color : azure;
+    transition: 0.5s;
+}
+
+img{
+    width:100%;
+    max-width:100px;
+}
+
+@font-face {
+    font-family: 'SF Mono Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF Mono Light'), url('SFMonoLight.woff') format('woff');
+    }
+
+@font-face {
+    font-family: IBM Plex Mono;
+    src: url(IBMPlexMono-ExtraLight.ttf) format("truetype");
+}

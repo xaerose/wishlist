@@ -1,6 +1,6 @@
 body{
-    color : rgb(30, 191, 255);
-    background-color: rgb(0, 0, 179);
+    color:azure;
+    background-color: rgb(36, 36, 48);
     display: grid;
     place-items: center;
     font-family: "Gill Sans", sans-serif;
@@ -10,4 +10,21 @@ img{
     max-width:100px;
     display: block;
     margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(79, 128, 235);
+}
+
+a:hover{
+    color : rgb(57, 99, 190);
+    transition: 0.5s;
+}
+
+img {
+    box-shadow: 0px 0px 4px 2px black;
+    /* seulement pour séparer le haut du texte du bas des images */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
