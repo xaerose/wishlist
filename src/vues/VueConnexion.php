@@ -13,11 +13,19 @@ class VueConnexion{
 
     public function connecter(){
         $content='';
-        $content.='<form action="index.php?action=connexion" method="post">
-        <input type="text" name="pseudo" placeholder="Pseudonyme" required>
-        <input type="password" name="mdp" placeholder="Mot de passe" required>
-        <button type="submit"value="Connexion">Se Connecter</button>
-        </form>';
+        $content.='<div class="container">
+        <div class="bg-img"></div>
+        <div class="contenu">
+            <form>
+                <div>
+                    <input type="email" name="email" placeholder="Email" required/>
+                    <input type="password" name="password" placeholder="Password" required/>
+                </div>
+                <button class="neon">Se connecter</button>
+            </form>
+            <p>Sinscrire ? <a href="">Inscrivez-vous</a></p>
+        </div>
+    </div>';
         return $content;
     }
 
@@ -41,12 +49,9 @@ class VueConnexion{
             <!DOCTYPE html>
             <html>
             <body><head>
-            <link rel="stylesheet" href="/style/style.css">
-            <h1>My Wishlist</h1>
+            <link rel="stylesheet" href="/style/styleconnect.css">
             </head>
-                <div class="content">
                     $content
-                </div>
             </body>
             </html>
             END ;
