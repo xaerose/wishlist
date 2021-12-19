@@ -76,3 +76,24 @@ $app->get('/item/{id}', function ($rq, $rs, $args) {
 
 
 $app->run();
+
+?>
+
+
+//pour chaque item de la liste
+<form action="" method="get" class="form-example">
+    <div class="form-example">
+        <label for="name">Enter your name: </label>
+        <input type="text" name="name" id="name" >
+    </div>
+    <div class="form-example">
+        <input type="submit" value="Subscribe !">
+    </div>
+</form>
+//quand c'est souscrie une case apparait en vert avec le nom du participant
+
+
+<h2>$_GET</h2>
+<pre>
+    <?php var_dump($_GET);?>
+</pre>
