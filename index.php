@@ -12,6 +12,10 @@ require 'src/vues/VueParticipant.php';
 require 'src/controleurs/ControlleurConnexion.php';
 require 'src/vues/VueConnexion.php';
 
+require 'src/controleurs/ControlleurCreationItem.php';
+require 'src/vues/VueCreationItem.php';
+
+
 $c = [
     'settings' => [
         'displayErrorDetails' => true]
@@ -73,6 +77,11 @@ $app->get('/item/{id}', function ($rq, $rs, $args) {
     $c = new \mywishlist\controleur\ControlleurAffichage($this);
     return $c->afficherUnItem($rq, $rs, $args);
 })->setName('affUnItem');
+
+//affichage creation d'un item
+$app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:afficherPageCreationItem')->setName('creerItem');
+
+
 
 
 $app->run();
