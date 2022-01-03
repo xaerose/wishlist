@@ -44,4 +44,12 @@ class ControlleurAffichage{
         $rs->getBody()->write("test : ".$args['val']);
         return $rs;
     }
+
+    public function reserverUnItem(Request $requete, Response $reponse):Response{
+        $vue = new \mywishlist\vue\VueReservation(array(0)) ;
+        $html=$vue->render( 1 ) ;
+        //$rs->getBody()->write("Liste des listes :");
+        $reponse->getBody()->write($html);
+        return $reponse;
+    }
 }

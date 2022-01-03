@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 class ControlleurConnexion{
 
-    public function afficherPageConnexion(Request $requete, Response $reponse):Response{
+    public function afficherPageConnexion():Response{
 
         $vue = new \mywishlist\vue\VueConnexion(array(0)) ;
         $html=$vue->render( 1 ) ;
