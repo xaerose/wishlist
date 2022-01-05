@@ -23,7 +23,7 @@ class ControlleurAffichage{
         $items = $l->items()->get() ;
         $liste[0] = $l->toArray();
         $liste[1] = $items; 
-        $vue = new \mywishlist\vue\VueParticipant($liste) ;
+        $vue = new \mywishlist\vues\VueParticipant($liste) ;
         $html=$vue->render( 2 ) ;
 
         //-----------------//
@@ -35,7 +35,7 @@ class ControlleurAffichage{
     public function afficherUnItem(Request $rq, Response $rs, $args):Response {
 
         $item = \mywishlist\models\Item::find( $args['id'] ) ;
-        $vue = new \mywishlist\vue\VueParticipant( [ $item->toArray() ] ) ;
+        $vue = new \mywishlist\vues\VueParticipant( [ $item->toArray() ] ) ;
         $html=$vue->render(3) ;
         //$rs->getBody()->write("Affichage d'un item : ".$args['id']);
         $rs->getBody()->write($html);
