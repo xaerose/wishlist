@@ -1,6 +1,6 @@
 <?php
 
-namespace mywishlist\vue;
+namespace mywishlist\vues;
 
 use Illuminate\Contracts\Validation\Validator;
 

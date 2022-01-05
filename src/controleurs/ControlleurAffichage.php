@@ -5,6 +5,8 @@ namespace mywishlist\controleur;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+use \mywishlist\vues\VueReservation as VueReservation;
+
 class ControlleurAffichage{
     public function afficherListes(Request $rq, Response $rs, $args):Response{
         //
@@ -46,7 +48,7 @@ class ControlleurAffichage{
     }
 
     public function reserverUnItem(Request $requete, Response $reponse):Response{
-        $vue = new \mywishlist\vue\VueReservation(array(0)) ;
+        $vue = new VueReservation(array(0)) ;
         $html=$vue->render( 1 ) ;
         //$rs->getBody()->write("Liste des listes :");
         $reponse->getBody()->write($html);
