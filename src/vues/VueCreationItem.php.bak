@@ -19,7 +19,7 @@ class VueCreationItem{
             Création d un item
         </div>
         <div class = "contenu">
-            <form action="/index.php/createItemFin" method="GET">
+            <form>
                 <div id = "texte">
                     <input type="text" name="id" placeholder="Identifiant de l item" required/>
                     <input type="text" name="nomItem" placeholder="Nom de l item" required/>
@@ -28,41 +28,23 @@ class VueCreationItem{
                     <input type="text" name="description" placeholder="Description" required/>
                 </div>
                 <div>
-                    <input type="file" name="illustration" accept="image/png, image/jpeg"/>
-                </div>	
-				<div id = "texte">
-                    <input type="number" name="tarif" placeholder="Tarif" required/>
+                    <input type="file" name="illustration" accept="image/png, image/jpeg" required/>
                 </div>
-				<button class="boutonAjouter">Ajouter un item</button>
-            </form>			
+                    
+                <button class="boutonAjouter">Ajouter un item</button>
+            </form>
         </div>
     </div>';
         return $content;
     }
-	
 
-	 public function afficherItemCreer(){
-        $content='';
-        $content.=
-        '
-    <div class = "container">
-        <div class = "titre">
-            L item a été inséré à la base de données.
-        </div>
-    </div>';
-        return $content;
-    }
-	
     public function render($selecteur) {
         switch ($selecteur) {
             case 1 : {
                 $content = $this->creerItem();
                 break;
             }
-			case 2 : {
-				$content = $this->afficherItemCreer();
-				break;
-			}
+
         }
         $html = <<<END
             <!DOCTYPE html>
@@ -76,7 +58,4 @@ class VueCreationItem{
             END ;
         return $html;
     }
-	
-	
-		
 }
