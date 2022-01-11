@@ -8,10 +8,16 @@ use \Psr\Http\Message\ResponseInterface as Response;
 class ControlleurCreationItem{
 
     public function afficherPageCreationItem(Request $requete, Response $reponse):Response{
-
         $vue = new \mywishlist\vues\VueCreationItem(array(0)) ;
         $html=$vue->render( 1 ) ;
         $reponse->getBody()->write($html);
         return $reponse;
     }
+	
+		public function afficherFinCreationItem(Request $requete, Response $reponse):Response{
+		$vue = new \mywishlist\vues\VueCreationItem(array(0));
+		$html=$vue->render(2);
+		$reponse->getBody()->write($html);
+        return $reponse;	
+	}
 }

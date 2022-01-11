@@ -1,3 +1,5 @@
 src/conf/db.conf.ini
 .idea/.name
 *.xml
+
+*.bak
