@@ -9,7 +9,7 @@ class ControlleurConnexion{
 
     public function afficherPageConnexion(Request $requete, Response $reponse):Response{
 
-        $vue = new \mywishlist\vue\VueConnexion(array(0)) ;
+        $vue = new \mywishlist\vues\VueConnexion(array(0)) ;
         $html=$vue->render( 1 ) ;
         //$rs->getBody()->write("Liste des listes :");
         $reponse->getBody()->write($html);

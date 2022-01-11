@@ -1,6 +1,6 @@
 <?php
 
-namespace mywishlist\vue;
+namespace mywishlist\vues;
 
 class VueConnexion{
 

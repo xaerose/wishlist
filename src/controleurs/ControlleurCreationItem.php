@@ -9,7 +9,7 @@ class ControlleurCreationItem{
 
     public function afficherPageCreationItem(Request $requete, Response $reponse):Response{
 
-        $vue = new \mywishlist\vue\VueCreationItem(array(0)) ;
+        $vue = new \mywishlist\vues\VueCreationItem(array(0)) ;
         $html=$vue->render( 1 ) ;
         $reponse->getBody()->write($html);
         return $reponse;

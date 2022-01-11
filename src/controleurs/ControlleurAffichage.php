@@ -11,7 +11,7 @@ class ControlleurAffichage{
     public function afficherListes(Request $rq, Response $rs, $args):Response{
         //
         $listes = \mywishlist\models\Liste::all();
-        $vue = new \mywishlist\vue\VueParticipant( $listes->toArray()) ;
+        $vue = new \mywishlist\vues\VueParticipant( $listes->toArray()) ;
         $html=$vue->render( 1 ) ;
         //$rs->getBody()->write("Liste des listes :");
         $rs->getBody()->write($html);
