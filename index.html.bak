@@ -22,9 +22,6 @@
         <a class="neon" href="/index.php/liste/3">
             Afficher Liste 3
         </a>
-		<a class="neon" href="/index.php/createItem">
-            Creer Item
-        </a>
 </body>
 
 
