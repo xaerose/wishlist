@@ -73,6 +73,12 @@ $app->get('/connexion', '\mywishlist\controleur\ControlleurConnexion:afficherPag
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
 
 //l'affichage d'un item désignée par son id
+
+$app->get('/item/{id}', function ($rq, $rs, $args) {
+    $c = new \mywishlist\controleur\ControlleurAffichage($this);
+    return $c->afficherUnItem($rq, $rs, $args);
+})->setName('affUnItem');
+
 $app->post('/item/{id}', function ($rq, $rs, $args) {
     $c = new \mywishlist\controleur\ControlleurAffichage($this);
     return $c->afficherUnItem($rq, $rs, $args);
