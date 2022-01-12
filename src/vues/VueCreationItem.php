@@ -14,14 +14,13 @@ class VueCreationItem{
         $content='';
         $content.=
         '
-    <div class = "container">
+        <div class = "container">
         <div class = "titre">
             Création d un item
         </div>
         <div class = "contenu">
-            <form action="/index.php/createItemFin" method="GET">
+            <form action="/index.php/createItemFin" method="POST">
                 <div id = "texte">
-                    <input type="text" name="id" placeholder="Identifiant de l item" required/>
                     <input type="text" name="nomItem" placeholder="Nom de l item" required/>
                 </div>
                 <div id = "description">
@@ -33,10 +32,13 @@ class VueCreationItem{
 				<div id = "texte">
                     <input type="number" name="tarif" placeholder="Tarif" required/>
                 </div>
-				<button class="boutonAjouter">Ajouter un item</button>
+				
+				<input type="submit" />
+				
             </form>			
         </div>
     </div>';
+			
         return $content;
     }
 	
@@ -44,7 +46,7 @@ class VueCreationItem{
 	 public function afficherItemCreer(){
         $content='';
         $content.=
-        '
+		'
     <div class = "container">
         <div class = "titre">
             L item a été inséré à la base de données.

@@ -85,10 +85,14 @@ $app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:affiche
 
 //$app->get('/createItemFin', '\mywishlist\controleur\ControlleurCreationItem:afficherFinCreationItem')->setName('afficherFinCreationItem');
 
-$app->get('/createItemFin', function ($rq, $rs, $args) {
-		
+$app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
+	
+	$nomInsert = $_POST["nomItem"];
+	$descrInsert = $_POST["description"];
+	$tarifInsert = $_POST["tarif"];
+	
 	$itemInsert = new Item();
-	$itemInsert->nom = 'testNom';
+	$itemInsert->nom = $nomInsert;
 	$itemInsert->descr = 'testDescription';
 	$itemInsert->tarif = 200;
 	$itemInsert->save();
