@@ -33,8 +33,8 @@ class VueCreationItem{
                     <input type="number" name="tarif" placeholder="Tarif" required/>
                 </div>
 				
-				<input type="submit" />
 				
+				<button type="submit" class="boutonAjouter">Ajouter un item</button>				
             </form>			
         </div>
     </div>';

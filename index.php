@@ -93,8 +93,8 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 	
 	$itemInsert = new Item();
 	$itemInsert->nom = $nomInsert;
-	$itemInsert->descr = 'testDescription';
-	$itemInsert->tarif = 200;
+	$itemInsert->descr = $descrInsert;
+	$itemInsert->tarif = $tarif;
 	$itemInsert->save();
 
 	

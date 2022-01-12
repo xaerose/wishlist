@@ -19,7 +19,7 @@ class VueCreationItem{
             Création d un item
         </div>
         <div class = "contenu">
-            <form action="/index.php/createItemFin" method="post">
+            <form action="/index.php/createItemFin" method="POST">
                 <div id = "texte">
                     <input type="text" name="nomItem" placeholder="Nom de l item" required/>
                 </div>
