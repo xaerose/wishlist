@@ -69,13 +69,11 @@ $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes
 
 $app->get('/connexion', '\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connect');
 
-$app->get('/liste/reservation', '\mywishlist\controleur\ControlleurAffichage:reserverUnItem')->setName('reserver');
-
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
 
 //l'affichage d'un item désignée par son id
-$app->get('/item/{id}', function ($rq, $rs, $args) {
+$app->post('/item/{id}', function ($rq, $rs, $args) {
     $c = new \mywishlist\controleur\ControlleurAffichage($this);
     return $c->afficherUnItem($rq, $rs, $args);
 })->setName('affUnItem');

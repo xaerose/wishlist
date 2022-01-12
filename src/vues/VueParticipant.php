@@ -38,15 +38,40 @@ class VueParticipant
     }
 
     private function htmlUnItem() : string {
-
-        $content='';
-
+        $nom = null;
+        if(!empty($GET['action']) && $_GET['action'] === 'annuler'){
+            unset($_COOKIE['nom']);
+            setcookie('nom', '', time() - 10);
+        }
+        if(!empty($_COOKIE['nom'])){
+            $nom = $_COOKIE['nom'];
+        }
+        if(!empty($_POST['nom'])){
+            setcookie('nom', $_POST['nom']);
+        }
+        $nom2 = htmlentities($nom);
+        $affichage='';
         foreach($this->tab as $item){
-            $url = "/img/".$item['img'];
-            $content .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
+        if($nom){
+            $affichage = '
+                            <h2>  $nom2 </h2>
+                         ';
+        } else {
+            $affichage = '
+                            <form action="" method="post">
+                                <div class="form">
+                                   <input class="form-control" name="nom" placeholder="Réserver un item">                  
+                                </div>
+                                <button class="btn btn-primary" type="submit">Réserver</button>
+                            </form>
+                        ';
         }
 
-        return $content;
+            $url = "/img/".$item['img'];
+            $affichage .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
+        }
+
+        return $affichage;
 
     }
 
