@@ -6,6 +6,9 @@ class Item extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'item';
     protected $primaryKey = 'id';
+	protected $nom = 'nom';
+	protected $descr = 'descr';
+	protected $tarif = 'tarif';
     public $timestamps = false;
 
     public function liste()

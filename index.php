@@ -86,10 +86,18 @@ $app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:affiche
 //$app->get('/createItemFin', '\mywishlist\controleur\ControlleurCreationItem:afficherFinCreationItem')->setName('afficherFinCreationItem');
 
 $app->get('/createItemFin', function ($rq, $rs, $args) {
-	$descrRecu = $_GET['description'];
+		
+	$itemInsert = new Item();
+	$itemInsert->nom = 'testNom';
+	$itemInsert->descr = 'testDescription';
+	$itemInsert->tarif = 200;
+	$itemInsert->save();
+
+	
 	// récupérer les différentes valeurs et crée un item avec
 	$control = new \mywishlist\controleur\ControlleurCreationItem($this);
 	return $control->afficherFinCreationItem($rq, $rs, $args);
+
 	
 })->setName('afficherFinCreationItem');
 
