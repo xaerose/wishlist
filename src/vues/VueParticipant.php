@@ -39,15 +39,11 @@ class VueParticipant
 
     private function htmlUnItem() : string {
         $nom = null;
-        if(!empty($GET['action']) && $_GET['action'] === 'annuler'){
-            unset($_COOKIE['nom']);
-            setcookie('nom', '', time() - 10);
-        }
         if(!empty($_COOKIE['nom'])){
             $nom = $_COOKIE['nom'];
         }
         if(!empty($_POST['nom'])){
-            setcookie('nom', $_POST['nom']);
+            setcookie('nom', $_POST['nom'], Time() * 60);
         }
         $nom2 = htmlentities($nom);
         $affichage='';
@@ -66,7 +62,6 @@ class VueParticipant
                             </form>
                         ';
         }
-
             $url = "/img/".$item['img'];
             $affichage .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
         }
