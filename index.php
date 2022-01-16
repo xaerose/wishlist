@@ -41,7 +41,7 @@ $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes
 $app->get('/connexion','\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connexion');
 
 //Affichage de la page d'inscription
-$app->get('/insription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
+$app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
 
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
