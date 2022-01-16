@@ -11,17 +11,20 @@ class VueConnexion{
         $this->tab=$tab;
     }
 
-    public function connecter(){
+    public function connecter(){        
         $content='';
         $content.='<div class="container">
         <div class="bg-img"></div>
         <div class="contenu">
             <form>
                 <div>
-                    <input type="email" name="email" placeholder="Email" required/>
-                    <input type="password" name="password" placeholder="Password" required/>
+                    <label class="neon">Adresse e-mail</label>                    
+                    <input type="email" name="email" placeholder="Email">
+                    <label class="neon">Mot de passe</label>                    
+                    <input type="password" name="password" placeholder="Mot de passe">
+                    <input type="submit" name="submit" placeholder="Se connecter" class="neon">                    
                 </div>
-                <button class="neon">Se connecter</button>
+                
             </form>
             <p>Sinscrire ? <a href="">Inscrivez-vous</a></p>
         </div>
@@ -31,6 +34,20 @@ class VueConnexion{
 
     public function creerCompte(){
         $content='';
+        $content.='<div class="container">
+        <div class="bg-img"></div>
+        <div class="contenu">
+            <form>
+                <div>
+                    <label class="neon">Adresse e-mail</label>                    
+                    <input type="email" name="email" placeholder="Email">
+                    <label class="neon">Mot de passe</label>                    
+                    <input type="password" name="password" placeholder="Mot de passe">
+                    <input type="submit" name="submit" placeholder="Se connecter" class="neon">                    
+                </div>                
+            </form>            
+        </div>
+    </div>';
         return $content;
     }
 
