@@ -15,18 +15,21 @@ class VueConnexion{
         $content='';
         $content.='<div class="container">
         <div class="bg-img"></div>
-        <div class="contenu">
+        <h1 class="neon">Connexion</h1>
+        <div class="contenu">        
             <form>
-                <div>
+                <div>               
                     <label class="neon">Adresse e-mail</label>                    
                     <input type="email" name="email" placeholder="Email">
+
                     <label class="neon">Mot de passe</label>                    
                     <input type="password" name="password" placeholder="Mot de passe">
+
                     <input type="submit" name="submit" placeholder="Se connecter" class="neon">                    
                 </div>
                 
             </form>
-            <p>Sinscrire ? <a href="">Inscrivez-vous</a></p>
+            <p>Sinscrire ? <a href="/index.php/inscription">Inscrivez-vous</a></p>
         </div>
     </div>';
         return $content;
@@ -36,16 +39,26 @@ class VueConnexion{
         $content='';
         $content.='<div class="container">
         <div class="bg-img"></div>
-        <div class="contenu">
+        <h1 class="neon">Inscription</h1>
+        <div class="contenu">        
             <form>
                 <div>
+                    <label class="neon">Nom utilisateur</label>                    
+                    <input type="text" name="pseudo" placeholder="Nom utilisateur" autocomplete="off">
+
                     <label class="neon">Adresse e-mail</label>                    
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" autocomplete="off">
+
                     <label class="neon">Mot de passe</label>                    
-                    <input type="password" name="password" placeholder="Mot de passe">
+                    <input type="password" name="password" placeholder="Mot de passe" autocomplete="off">
+
+                    <label class="neon"> Confirmation mdp</label>                    
+                    <input type="password" name="password_retype" placeholder="Confirmer votre mot de passe" autocomplete="off">
+                    
                     <input type="submit" name="submit" placeholder="Se connecter" class="neon">                    
                 </div>                
-            </form>            
+            </form>
+            <!-- <p>Déjà inscrit ? <a href="/index.php/connexion">Connectez-vous</a></p> -->        
         </div>
     </div>';
         return $content;
