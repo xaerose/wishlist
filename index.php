@@ -43,6 +43,8 @@ $app->get('/connexion','\mywishlist\controleur\ControlleurConnexion:afficherPage
 //Affichage de la page d'inscription
 $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
 
+$app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
+
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
 
@@ -83,6 +85,8 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 
 
 $app->run();
+
+
 
 
 
