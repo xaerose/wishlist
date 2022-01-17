@@ -15,6 +15,9 @@ require 'src/vues/VueConnexion.php';
 require 'src/controleurs/ControlleurCreationItem.php';
 require 'src/vues/VueCreationItem.php';
 
+require 'src/controleurs/ControlleurCreationListe.php';
+require 'src/vues/VueCreationListe.php';
+
 
 $c = [
     'settings' => [
@@ -83,6 +86,39 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 	
 })->setName('afficherFinCreationItem');
 
+/*****************************************************/
+
+//affichage de la page : creation de liste
+$app->get('/createList', '\mywishlist\controleur\ControlleurCreationListe:afficherPageCreationListe')->setName('creerListe');
+
+
+$app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
+	// recuperation des variables POST a inserer
+
+    //TODO verification de possible injection HTML 
+    $listName = $_POST["listName"];
+	$description = $_POST["description"];
+	$expiration = $_POST["expiration"];
+
+    //$listName_verified = $data['name'];
+
+    // creation de la nouvelle liste 
+	$listInsertion = new Liste();
+    // TODO creation d un token 
+	$listInsertion->titre = $listName;
+	$listInsertion->description = $description;
+	$listInsertion->expiration = $expiration;
+	$listInsertion->save();
+
+	
+	// récupère les différentes valeurs et crée une liste 
+	$control = new \mywishlist\controleur\ControlleurCreationListe($this);
+	return $control->afficherCreationFinalisee($rq, $rs, $args);
+
+	
+})->setName('afficherCreationListeFinalisee');
+
+/*****************************************************/
 
 $app->run();
 
