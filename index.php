@@ -18,6 +18,8 @@ require 'src/vues/VueCreationItem.php';
 require 'src/controleurs/ControlleurCreationListe.php';
 require 'src/vues/VueCreationListe.php';
 
+require 'src/controleurs/ControlleurModificationListe.php';
+require 'src/vues/VueModificationListe.php';
 
 $c = [
     'settings' => [
@@ -35,7 +37,6 @@ $app->get('/test/{val}', function ($rq,$rs,$args){
     $c = new \mywishlist\controleur\ControlleurAffichage($this);
     return $c->test($rq,$rs,$args);
 })->setName('test');
-
 
 //Affichage de la liste de la liste de souhait
 $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes')->setName('listeDesListes');
@@ -116,6 +117,40 @@ $app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
 	return $control->afficherCreationFinalisee($rq, $rs, $args);
 
 	
+})->setName('afficherCreationListeFinalisee');
+
+/*****************************************************/
+
+/*****************************************************/
+
+//affichage de la page : modification de liste
+$app->get('/modifList/{noListe}', \mywishlist\controleur\ControlleurModificationListe::class.':afficherPageModifListe')->setName('affUneListe');
+
+$app->map(['GET', 'POST'], '/ModifListEnd/{noListe}', function ($rq, $rs, $args) {
+    // recuperation des variables POST a inserer
+
+
+    $l = Liste::find( $args['noListe'] ) ;
+    //TODO verification de possible injection HTML
+    $listName = $_POST["listName"];
+    $description = $_POST["description"];
+    $expiration = $_POST["expiration"];
+
+    //$listName_verified = $data['name'];
+
+    // modification de la liste
+    // TODO creation d un token
+    $l->titre = $listName;
+    $l->description = $description;
+    $l->expiration = $expiration;
+    $l->save();
+
+
+    // récupère les différentes valeurs et crée une liste
+    $control = new \mywishlist\controleur\ControlleurModificationListe($this);
+    return $control->afficherModifFinalisee($rq, $rs, $args);
+
+
 })->setName('afficherCreationListeFinalisee');
 
 /*****************************************************/

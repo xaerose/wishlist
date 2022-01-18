@@ -54,4 +54,6 @@ class ControlleurAffichage{
         $reponse->getBody()->write($html);
         return $reponse;
     }
+
+
 }

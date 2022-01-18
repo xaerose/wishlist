@@ -18,7 +18,9 @@ class VueParticipant
     private function htmlListes() : string{
         $content='';
         foreach($this->tab as $l){
-            $content .="<article>$l[no]: $l[user_id],<a href=/index.php/liste/$l[no]>$l[titre]</a>, $l[description], $l[expiration], $l[token]</article>";
+            $content .="<article>$l[no]: $l[user_id],<a href=/index.php/liste/$l[no]>$l[titre]</a>, $l[description], $l[expiration], $l[token]</article>
+                ";
+
         }  
         return "<section>$content</section>";
     }
@@ -39,32 +41,26 @@ class VueParticipant
 
     private function htmlUnItem() : string {
         $nom = null;
-        if(!empty($_COOKIE['nom'])){
-            $nom = $_COOKIE['nom'];
-        }
-        if(!empty($_POST['nom'])){
-            setcookie('nom', $_POST['nom'], Time() * 60);
-        }
         $nom2 = htmlentities($nom);
         $affichage='';
         foreach($this->tab as $item){
         if($nom){
             $affichage = '
-                            <h2>  $nom2 </h2>
+                            <h2> //ce qui est insert dans la bdd  </h2>
                          ';
         } else {
             $affichage = '
-                            <form action="" method="post">
+                            <form action="#" method="post">
                                 <div class="form">
-                                   <input class="form-control" name="nom" placeholder="Réserver un item">                  
-                                </div>
-                                <button class="btn btn-primary" type="submit">Réserver</button>
-                            </form>
-                        ';
-        }
-            $url = "/img/".$item['img'];
-            $affichage .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
-        }
+                                       <input class="form-control" name="nom" placeholder="Réserver un item">                  
+                                    </div>
+                                    <button class="btn btn-primary">Réserver</button>
+                                </form>
+                            ';
+            }
+                $url = "/img/".$item['img'];
+                $affichage .="<article>$item[id]: $item[descr], $item[tarif] €, <br> <img src=".$url."></article>";
+            }
 
         return $affichage;
 
@@ -85,12 +81,14 @@ class VueParticipant
                 break;
             }
         }
+        $listNo=$this->tab[0]['no'];
         $html = <<<END
             <!DOCTYPE html>
             <html>
             <body><head>
             <link rel="stylesheet" href="/style/style.css">
             <h1>My Wishlist</h1>
+            <a href="/index.php/modifList/$listNo" class="btn btn-primary">Modifier</a>
             </head>
                 <div class="content">
                     $content
