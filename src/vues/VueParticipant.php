@@ -36,6 +36,13 @@ class VueParticipant
             $content .="<li>$item[id]: <a href=/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr], $item[tarif] €, <br> <img src=".$url."></li>";
         }
         $content.="</ul>";
+        $content.="<br><p>Insérer un message</p>";
+        $content.='<form method="POST">
+        <div id = "message">
+                <input type="text" name="Message" placeholder="Message" required/>
+        </div>
+        <button type="submit" class="creerMessage">Envoyer le message</button>
+        </form>';
         return $content;
     }
 

@@ -20,4 +20,5 @@ class ControlleurCreationListe{
 		$reponse->getBody()->write($html);
         return $reponse;	
 	}
+        $vue = new \mywishlist\vues\VueCreationListe(array(0)) ;
 }
