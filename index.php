@@ -45,7 +45,9 @@ $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes
 //Affichage de la page de connexion
 $app->get('/connexion','\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connexion');
 
-//Affichage de la page d'inscription
+//redirection de la page de connexion
+//$app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscriptionRedirection')->setName('afficherPageInscriptionRedirection');
+
 $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
 
 $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
@@ -69,23 +71,23 @@ $app->post('/item/{id}', function ($rq, $rs, $args) {
 $app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:afficherPageCreationItem')->setName('creerItem');
 
 $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
-	
-	$nomInsert = $_POST["nomItem"];
-	$descrInsert = $_POST["description"];
-	$tarifInsert = $_POST["tarif"];
-	
-	$itemInsert = new Item();
-	$itemInsert->nom = $nomInsert;
-	$itemInsert->descr = $descrInsert;
-	$itemInsert->tarif = $tarif;
-	$itemInsert->save();
 
-	
-	// récupérer les différentes valeurs et crée un item avec
-	$control = new \mywishlist\controleur\ControlleurCreationItem($this);
-	return $control->afficherFinCreationItem($rq, $rs, $args);
+    $nomInsert = $_POST["nomItem"];
+    $descrInsert = $_POST["description"];
+    $tarifInsert = $_POST["tarif"];
 
-	
+    $itemInsert = new Item();
+    $itemInsert->nom = $nomInsert;
+    $itemInsert->descr = $descrInsert;
+    $itemInsert->tarif = $tarif;
+    $itemInsert->save();
+
+
+    // récupérer les différentes valeurs et crée un item avec
+    $control = new \mywishlist\controleur\ControlleurCreationItem($this);
+    return $control->afficherFinCreationItem($rq, $rs, $args);
+
+
 })->setName('afficherFinCreationItem');
 
 /*****************************************************/
@@ -95,26 +97,26 @@ $app->get('/createList', '\mywishlist\controleur\ControlleurCreationListe:affich
 
 
 $app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
-	// recuperation des variables POST a inserer
+    // recuperation des variables POST a inserer
 
-    //TODO verification de possible injection HTML 
+    //TODO verification de possible injection HTML
     $listName = $_POST["listName"];
-	$description = $_POST["description"];
-	$expiration = $_POST["expiration"];
+    $description = $_POST["description"];
+    $expiration = $_POST["expiration"];
 
-    // creation de la nouvelle liste 
-	$listInsertion = new Liste();
-    // TODO creation d un token 
-	$listInsertion->titre = $listName;
-	$listInsertion->description = $description;
-	$listInsertion->expiration = $expiration;
-	$listInsertion->save();
+    // creation de la nouvelle liste
+    $listInsertion = new Liste();
+    // TODO creation d un token
+    $listInsertion->titre = $listName;
+    $listInsertion->description = $description;
+    $listInsertion->expiration = $expiration;
+    $listInsertion->save();
 
-	// récupère les différentes valeurs et crée une liste 
-	$control = new \mywishlist\controleur\ControlleurCreationListe($this);
-	return $control->afficherCreationFinalisee($rq, $rs, $args);
+    // récupère les différentes valeurs et crée une liste
+    $control = new \mywishlist\controleur\ControlleurCreationListe($this);
+    return $control->afficherCreationFinalisee($rq, $rs, $args);
 
-	
+
 })->setName('afficherCreationListeFinalisee');
 
 /*****************************************************/

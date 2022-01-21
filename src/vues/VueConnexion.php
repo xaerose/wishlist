@@ -40,7 +40,7 @@ class VueConnexion{
         <div class="bg-img"></div>
         <h1 class="neon">Inscription</h1>
         <div class="contenu">        
-            <form methode="POST" action="/index.php/verifierInscription">
+            <form method="POST" action="/index.php/inscription">
                 <div>
                     <label class="neon">Nom utilisateur</label>                    
                     <input type="text" name="pseudo" placeholder="Nom utilisateur" autocomplete="off">
@@ -54,7 +54,7 @@ class VueConnexion{
                     <label class="neon"> Confirmation mdp</label>                    
                     <input type="password" name="password_retype" placeholder="Confirmer votre mot de passe" autocomplete="off">
                     
-                    <input type="submit" name="submit" placeholder="Se connecter" class="neon" >                    
+                    <button type="submit" name="submit" class="neon" >Se connecter</button>                    
                 </div>                
             </form>
             <!-- <p>Déjà inscrit ? <a href="/index.php/connexion">Connectez-vous</a></p> -->        
