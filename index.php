@@ -45,12 +45,14 @@ $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes
 //Affichage de la page de connexion
 $app->get('/connexion','\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connexion');
 
-//redirection de la page de connexion
-//$app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscriptionRedirection')->setName('afficherPageInscriptionRedirection');
-
+//affichage de la page d'inscription
 $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
 
+//route verifiant l'inscription
 $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
+
+//route verifiant la connexion
+$app->post('/connexion','\mywishlist\controleur\ControlleurConnexion:verifierConnexion')->setName('verifierConnexion');
 
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');

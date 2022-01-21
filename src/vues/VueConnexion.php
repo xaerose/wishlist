@@ -13,18 +13,19 @@ class VueConnexion{
     public function connecter(){        
         $content='';
         $content.='<div class="container">
+        <span style="color:white;">'.$this->tab[0]->getQueryParam("res").'</span>
         <div class="bg-img"></div>
         <h1 class="neon">Connexion</h1>
         <div class="contenu">        
-            <form methode="POST" action="/index.php/connexion">
+            <form method="POST" action="/index.php/connexion">
                 <div>               
                     <label class="neon">Adresse e-mail</label>                    
                     <input type="email" name="email" placeholder="Email">
 
                     <label class="neon">Mot de passe</label>                    
-                    <input type="password" name="password" placeholder="Mot de passe">
-
-                    <input type="submit" name="submit" placeholder="Se connecter" class="neon">                    
+                    <input type="password" name="password" placeholder="Mot de passe">                   
+                    
+                    <button type="submit" name="submit" class="neon" >Se connecter</button>                  
                 </div>
                 
             </form>
@@ -37,6 +38,7 @@ class VueConnexion{
     public function creerCompte(){
         $content='';
         $content.='<div class="container">
+        <span >'.$this->tab[0]->getQueryParam("res").'</span>
         <div class="bg-img"></div>
         <h1 class="neon">Inscription</h1>
         <div class="contenu">        
@@ -54,15 +56,15 @@ class VueConnexion{
                     <label class="neon"> Confirmation mdp</label>                    
                     <input type="password" name="password_retype" placeholder="Confirmer votre mot de passe" autocomplete="off">
                     
-                    <button type="submit" name="submit" class="neon" >Se connecter</button>                    
+                    <button type="submit" name="submit" class="neon" >S inscrire</button>
                 </div>                
             </form>
-            <!-- <p>Déjà inscrit ? <a href="/index.php/connexion">Connectez-vous</a></p> -->        
+             <br><br> 
+            <p>Déjà inscrit ? <a href="/index.php/connexion">Connectez-vous</a></p>     
         </div>
     </div>';
         return $content;
     }
-
 
     public function redirectionInscription(){
         $content='';
@@ -76,7 +78,6 @@ class VueConnexion{
     </div>';
         return $content;
     }
-
 
     public function render($selecteur) {
         switch ($selecteur) {
