@@ -38,10 +38,8 @@ class VueCreationItem{
             </form>			
         </div>
     </div>';
-			
         return $content;
     }
-	
 
 	 public function afficherItemCreer(){
         $content='';
@@ -54,7 +52,7 @@ class VueCreationItem{
     </div>';
         return $content;
     }
-	
+
     public function render($selecteur) {
         switch ($selecteur) {
             case 1 : {

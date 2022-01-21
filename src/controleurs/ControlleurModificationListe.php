@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class ControlleurModificationListe
 {
-
     public function afficherPageModifListe(Request $requete, Response $reponse, $args) : Response {
         $l = \mywishlist\models\Liste::find( $args['noListe'] ) ;
         $vue = new \mywishlist\vues\VueModificationListe(array($l)) ;

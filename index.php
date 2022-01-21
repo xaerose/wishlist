@@ -9,6 +9,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 require_once 'vendor/autoload.php';
 require 'src/controleurs/ControlleurAffichage.php';
 require 'src/vues/VueParticipant.php';
+
 require 'src/controleurs/ControlleurConnexion.php';
 require 'src/vues/VueConnexion.php';
 
@@ -44,7 +45,9 @@ $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes
 //Affichage de la page de connexion
 $app->get('/connexion','\mywishlist\controleur\ControlleurConnexion:afficherPageConnexion')->setName('connexion');
 
-//Affichage de la page d'inscription
+//redirection de la page de connexion
+//$app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscriptionRedirection')->setName('afficherPageInscriptionRedirection');
+
 $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPageInscription')->setName('inscription');
 
 $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
@@ -68,7 +71,7 @@ $app->post('/item/{id}', function ($rq, $rs, $args) {
 $app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:afficherPageCreationItem')->setName('creerItem');
 
 $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
-	
+
 	$nomInsert = $_POST["nomItem"];
 	$descrInsert = $_POST["description"];
 	$tarifInsert = $_POST["tarif"];
@@ -101,8 +104,6 @@ $app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
 	$description = $_POST["description"];
 	$expiration = $_POST["expiration"];
 
-    //$listName_verified = $data['name'];
-
     // creation de la nouvelle liste 
 	$listInsertion = new Liste();
     // TODO creation d un token 
@@ -110,7 +111,6 @@ $app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
 	$listInsertion->description = $description;
 	$listInsertion->expiration = $expiration;
 	$listInsertion->save();
-
 	
 	// récupère les différentes valeurs et crée une liste 
 	$control = new \mywishlist\controleur\ControlleurCreationListe($this);
@@ -126,17 +126,15 @@ $app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
 //affichage de la page : modification de liste
 $app->get('/modifList/{noListe}', \mywishlist\controleur\ControlleurModificationListe::class.':afficherPageModifListe')->setName('affUneListe');
 
+
+
 $app->map(['GET', 'POST'], '/ModifListEnd/{noListe}', function ($rq, $rs, $args) {
     // recuperation des variables POST a inserer
-
-
     $l = Liste::find( $args['noListe'] ) ;
     //TODO verification de possible injection HTML
     $listName = $_POST["listName"];
     $description = $_POST["description"];
     $expiration = $_POST["expiration"];
-
-    //$listName_verified = $data['name'];
 
     // modification de la liste
     // TODO creation d un token
@@ -144,7 +142,6 @@ $app->map(['GET', 'POST'], '/ModifListEnd/{noListe}', function ($rq, $rs, $args)
     $l->description = $description;
     $l->expiration = $expiration;
     $l->save();
-
 
     // récupère les différentes valeurs et crée une liste
     $control = new \mywishlist\controleur\ControlleurModificationListe($this);
@@ -157,27 +154,3 @@ $app->map(['GET', 'POST'], '/ModifListEnd/{noListe}', function ($rq, $rs, $args)
 
 $app->run();
 
-
-
-
-
-
-/**
-pour chaque item de la liste
-<form action="" method="get" class="form-example">
-    <div class="form-example">
-        <label for="name">Enter your name: </label>
-        <input type="text" name="name" id="name" >
-    </div>
-    <div class="form-example">
-        <input type="submit" value="Subscribe !">
-    </div>
-</form>
-quand c'est souscrie une case apparait en vert avec le nom du participant
-
-
-<h2>$_GET</h2>
-<pre>
-    <?php var_dump($_GET);?>
-</pre>
-*/

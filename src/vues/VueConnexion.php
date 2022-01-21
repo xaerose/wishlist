@@ -6,7 +6,6 @@ class VueConnexion{
 
     public array $tab;
 
-
     public function __construct(array $tab) {
         $this->tab=$tab;
     }
@@ -17,7 +16,7 @@ class VueConnexion{
         <div class="bg-img"></div>
         <h1 class="neon">Connexion</h1>
         <div class="contenu">        
-            <form>
+            <form methode="POST" action="/index.php/connexion">
                 <div>               
                     <label class="neon">Adresse e-mail</label>                    
                     <input type="email" name="email" placeholder="Email">
@@ -41,7 +40,7 @@ class VueConnexion{
         <div class="bg-img"></div>
         <h1 class="neon">Inscription</h1>
         <div class="contenu">        
-            <form methode="POST" action="/index.php/inscription">
+            <form methode="POST" action="/index.php/verifierInscription">
                 <div>
                     <label class="neon">Nom utilisateur</label>                    
                     <input type="text" name="pseudo" placeholder="Nom utilisateur" autocomplete="off">
@@ -64,6 +63,21 @@ class VueConnexion{
         return $content;
     }
 
+
+    public function redirectionInscription(){
+        $content='';
+        $content.=
+            '
+        <link rel="stylesheet" href="/style/styleListeFinalisee.css">
+        <div class = "container">
+        <div class = "titre">
+            Vous venez de vous inscrire!
+        </div>
+    </div>';
+        return $content;
+    }
+
+
     public function render($selecteur) {
         switch ($selecteur) {
             case 1 : {
@@ -74,7 +88,12 @@ class VueConnexion{
                 $content = $this->creerCompte();
                 break;
             }
+            case 3 : {
+                $content = $this->redirectionInscription();
+                break;
+            }
         }
+
         $html = <<<END
             <!DOCTYPE html>
             <html>

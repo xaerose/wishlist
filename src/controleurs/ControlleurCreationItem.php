@@ -13,7 +13,6 @@ class ControlleurCreationItem{
         $reponse->getBody()->write($html);
         return $reponse;
     }
-	
 		public function afficherFinCreationItem(Request $requete, Response $reponse):Response{
 		$vue = new \mywishlist\vues\VueCreationItem(array(0));
 		$html=$vue->render(2);

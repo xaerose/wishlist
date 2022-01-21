@@ -9,10 +9,8 @@ class VueParticipant
 
     public array $tab;
 
-
     public function __construct(array $tab) {
         $this->tab=$tab;
-
     }
 
     private function htmlListes() : string{
