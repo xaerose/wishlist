@@ -44,6 +44,10 @@ class VueParticipant
         return $content;
     }
 
+    private function ecrireMessage() : string {
+        $content='';
+    }
+
     private function htmlUnItem() : string {
         $nom = null;
         $nom2 = htmlentities($nom);
@@ -86,14 +90,14 @@ class VueParticipant
                 break;
             }
         }
-        $listNo=$this->tab[0]['no'];
+        $token=$this->tab[0]['token'];
         $html = <<<END
             <!DOCTYPE html>
             <html>
             <body><head>
             <link rel="stylesheet" href="/style/style.css">
             <h1>My Wishlist</h1>
-            <a href="/index.php/modifList/$listNo" class="btn btn-primary">Modifier</a>
+            <a href="/index.php/modifList/$token" class="btn btn-primary">Modifier</a>
             </head>
                 <div class="content">
                     $content

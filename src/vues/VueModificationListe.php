@@ -8,10 +8,13 @@ class VueModificationListe
 
     public function __construct(array $tab) {
         $this->tab=$tab;
+        //echo $tab;
     }
 
+    
     public function modifListePage(){
         $content='';
+        //  $content = $this->tab[0]->token;
         $content.=
             '
         <link rel="stylesheet" href="/style/stylecreationliste.css">
@@ -20,7 +23,7 @@ class VueModificationListe
         <p>Modification d\'une WishList </p>
     </div>
     <div class = "contenu">
-        <form action="/index.php/ModifListEnd/'.$this->tab[0]->no.'" method="POST">
+        <form action="/index.php/ModifListEnd/'.$this->tab[0]->token.'" method="POST">
             <div id = "texte">
                 <input type="text" name="listName" placeholder="Nom de la liste" value="'.$this->tab[0]->titre.'" required/>
             </div>

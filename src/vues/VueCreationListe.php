@@ -53,6 +53,20 @@ class VueCreationListe{
     </div>';
         return $content;
     }
+
+    public function partagerList(){
+        $content='';
+        $content.=
+		'
+        <link rel="stylesheet" href="/style/styleListeFinalisee.css">
+        <div class = "container">
+        <div class = "titre">
+            <h1> Partager </h1>
+        </div>
+
+    </div>';
+        return $content;
+    }
 	
     public function render($selecteur) {
         switch ($selecteur) {

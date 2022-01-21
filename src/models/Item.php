@@ -13,7 +13,6 @@ class Item extends \Illuminate\Database\Eloquent\Model
 
     public function liste()
     {
-        echo "test";
         return $this->belongsTo('mywishlist\models\Liste', 'liste_id');
     }
 }
