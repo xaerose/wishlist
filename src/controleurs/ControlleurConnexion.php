@@ -87,8 +87,8 @@ class ControlleurConnexion
     }
 
     /**
-     * Gestion du formulaire de connexion.
-     * Échappe les balises HTML pour éviter les injections.
+     * Gestion du formulaire de d'inscription.
+     *
      * Redirige vers le profil si la création de la liste est réussie.
      */
     public function verifierInscription(Request $request, Response $rs): Response

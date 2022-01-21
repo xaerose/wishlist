@@ -14,6 +14,7 @@ class VueCreationItem{
         $content='';
         $content.=
         '
+        <link rel="stylesheet" href="/style/stylecreationliste.css">
         <div class = "container">
         <div class = "titre">
             Création d un item
