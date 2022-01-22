@@ -9,6 +9,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 require_once 'vendor/autoload.php';
 require 'src/controleurs/ControlleurAffichage.php';
 require 'src/vues/VueParticipant.php';
+// le controleur affichage a besoin de la vue accueil pour afficher la landing page
+require 'src/vues/VueAccueil.php';
 
 require 'src/controleurs/ControlleurConnexion.php';
 require 'src/vues/VueConnexion.php';
@@ -34,10 +36,8 @@ $db->addConnection(parse_ini_file('src/conf/db.conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-$app->get('/test/{val}', function ($rq,$rs,$args){
-    $c = new \mywishlist\controleur\ControlleurAffichage($this);
-    return $c->test($rq,$rs,$args);
-})->setName('test');
+// Affichage de la landing page 
+$app->get('/home', \mywishlist\controleur\ControlleurAffichage::class.':afficherAccueil')->setName('Accueil');
 
 //Affichage de la liste de la liste de souhait
 $app->get('/listes', '\mywishlist\controleur\ControlleurAffichage:afficherListes')->setName('listeDesListes');
@@ -55,7 +55,7 @@ $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierI
 $app->post('/connexion','\mywishlist\controleur\ControlleurConnexion:verifierConnexion')->setName('verifierConnexion');
 
 //l'affichage de la liste des items d'une liste de souhaits
-$app->get('/liste/{noListe}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
+$app->get('/liste/{token}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
 
 //l'affichage d'un item désignée par son id
 

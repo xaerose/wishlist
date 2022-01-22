@@ -4,6 +4,7 @@ body{
     display: grid;
     place-items: center;
     font-family: "Gill Sans", sans-serif;
+    margin : 0;
 }
 img{
     width:100%;

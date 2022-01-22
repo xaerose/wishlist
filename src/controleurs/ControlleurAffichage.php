@@ -7,7 +7,18 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 use \mywishlist\vues\VueReservation as VueReservation;
 
+use \mywishlist\vues\VueAccueil as VueAccueil;
+
 class ControlleurAffichage{
+
+
+    public function afficherAccueil(Request $rq, Response $rs, $args) : Response{      
+        $listes = \mywishlist\models\Liste::all();
+        $vue = new \mywishlist\vues\VueAccueil($listes->toArray()) ;   
+        $html=$vue->render() ;
+        $rs->getBody()->write($html);
+        return $rs;
+    }
 
     public function afficherListes(Request $rq, Response $rs, $args):Response{
         //
@@ -20,8 +31,8 @@ class ControlleurAffichage{
     }
 
     public function afficherUneListe(Request $rq, Response $rs, $args):Response {
-        $l = \mywishlist\models\Liste::find( $args['noListe'] ) ;
-        $items = $l->items()->get() ;
+        $l = \mywishlist\models\Liste::find( $args['token'] ) ;
+        $items = $l->items()->get();
         $liste[0] = $l->toArray();
         $liste[1] = $items; 
         $vue = new \mywishlist\vues\VueParticipant($liste) ;

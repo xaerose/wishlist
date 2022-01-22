@@ -34,6 +34,7 @@ class VueParticipant
             $content .="<li>$item[id]: <a href=/index.php/item/".$item['id'].">$item[nom]</a> ,$item[descr], $item[tarif] €, <br> <img src=".$url."></li>";
         }
         $content.="</ul>";
+        $content.='<a href="/index.php/modifList/$token" class="btn btn-primary">Modifier</a>';
         $content.="<br><p>Insérer un message</p>";
         $content.='<form method="POST">
         <div id = "message">
@@ -96,8 +97,7 @@ class VueParticipant
             <html>
             <body><head>
             <link rel="stylesheet" href="/style/style.css">
-            <h1>My Wishlist</h1>
-            <a href="/index.php/modifList/$token" class="btn btn-primary">Modifier</a>
+            <h1>My<span style="color:rgb(79, 128, 235);">Wishlist</span></h1>
             </head>
                 <div class="content">
                     $content
