@@ -50,6 +50,13 @@ class VueCreationItem{
         <div class = "titre">
             L item a été inséré à la base de données.
         </div>
+		
+		<div class = "contenu">
+			<form action="/index.html" method="GET">
+				<button type="submit" class"boutonAjouter">Revenir à l accueil</button>
+			</form>
+		</div>
+
     </div>';
         return $content;
     }
