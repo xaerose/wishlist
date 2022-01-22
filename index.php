@@ -76,14 +76,15 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 
     $nomInsert = $_POST["nomItem"];
     $descrInsert = $_POST["description"];
+	$urlInsert = $_POST["url"];
     $tarifInsert = $_POST["tarif"];
 
     $itemInsert = new Item();
     $itemInsert->nom = $nomInsert;
     $itemInsert->descr = $descrInsert;
+	$itemInsert->url = $urlInsert;
     $itemInsert->tarif = $tarif;
     $itemInsert->save();
-
 
     // récupérer les différentes valeurs et crée un item avec
     $control = new \mywishlist\controleur\ControlleurCreationItem($this);

@@ -8,6 +8,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
     protected $primaryKey = 'id';
 	protected $nom = 'nom';
 	protected $descr = 'descr';
+	protected $url = 'url';
 	protected $tarif = 'tarif';
     public $timestamps = false;
 

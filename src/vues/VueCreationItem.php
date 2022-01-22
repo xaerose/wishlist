@@ -28,7 +28,7 @@ class VueCreationItem{
                     <input type="text" name="description" placeholder="Description" required/>
                 </div>
                 <div>
-                    <input type="file" name="illustration" accept="image/png, image/jpeg"/>
+                    <input type="text" name="url" placeholder="URL"/>
                 </div>	
 				<div id = "texte">
                     <input type="number" name="tarif" placeholder="Tarif" required/>
