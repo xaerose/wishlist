@@ -40,7 +40,7 @@ class VueConnexion{
     public function creerCompte(){
         $content='';
         $content.='<div class="container">
-        <span >'.$this->tab[0]->getQueryParam("res").'</span>
+        <span class="neon" >'.$this->tab[0]->getQueryParam("res").'</span>
         <div class="bg-img"></div>
         <h1 class="neon">Inscription</h1>
         <div class="contenu">        
