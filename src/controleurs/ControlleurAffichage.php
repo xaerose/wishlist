@@ -67,5 +67,12 @@ class ControlleurAffichage{
         return $reponse;
     }
 
+    public function verifierReservation(Request $rq, Response $rs)
+    {
+
+    }
+
+
+
 
 }

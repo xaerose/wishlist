@@ -3,6 +3,8 @@
 namespace mywishlist\controleur;
 
 use mywishlist\models\Utilisateurs;
+use mywishlist\vues\VueAccueil;
+use mywishlist\vues\VueConnexion;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -56,7 +58,7 @@ class ControlleurConnexion
 
             // On regarde si l'utilisateur est inscrit dans la table utilisateurs
 
-            $row = Utilisateurs::select('pseudo','email','password','token')->where('email', '=', $email)->first();
+            $row = Utilisateurs::select('pseudo','email','password','token','id')->where('email', '=', $email)->first();
 
             // Si > à 0 alors l'utilisateur existe
             if ($row > 0) {
@@ -65,8 +67,8 @@ class ControlleurConnexion
                     // Si le mot de passe est le bon
                     if (password_verify($password, $row['password'])) {
                         // On créer la session et on redirige sur landing.php
-                        $_SESSION['user'] = $row['token'];
-                        return $rs->withRedirect('/index.php/connexion?res=Connexion reussi');
+                        $_SESSION['user'] = $row['id'];
+                        return $rs->withRedirect('/index.php/home');
                     } else {
                         return $rs->withRedirect('/index.php/connexion?res=mot de passe incorrect');
                     }
@@ -144,6 +146,12 @@ class ControlleurConnexion
             }
         }
         return $rs;
+    }
+
+    public function deconnexion(Request $request, Response $rs):Response
+    {
+        session_destroy(); // on détruit la/les session(s)
+        return $rs->withRedirect('/index.php/home');
     }
 
 }

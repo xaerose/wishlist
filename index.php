@@ -24,6 +24,12 @@ require 'src/vues/VueCreationListe.php';
 require 'src/controleurs/ControlleurModificationListe.php';
 require 'src/vues/VueModificationListe.php';
 
+session_start();
+
+if(!isset($_SESSION['user'])){
+    $_SESSION['user']=-1;
+}
+
 $c = [
     'settings' => [
         'displayErrorDetails' => true]
@@ -50,6 +56,9 @@ $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPa
 
 //route verifiant l'inscription
 $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
+
+//route gerant la deconnexion
+$app->post('/deconnexion','\mywishlist\controleur\ControlleurConnexion:deconnexion')->setName('deconnexion');
 
 //route verifiant la connexion
 $app->post('/connexion','\mywishlist\controleur\ControlleurConnexion:verifierConnexion')->setName('verifierConnexion');

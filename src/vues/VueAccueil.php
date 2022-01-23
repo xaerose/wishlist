@@ -16,15 +16,22 @@ class VueAccueil
     private function afficherAccueil() : string{
         $content = '';
         $token = $this->tab[0]['token'];
+        if($_SESSION['user']!=-1){
+            $content.='<form method="POST" action="/index.php/deconnexion">
+                 <a class="deconnexion" href="/index.php/home">
+                     <button type="submit" name="submit" class="neon" href="/index.php/home" >Deconnexion</button>         
+                </a>
+             </form> ';
+        }else{
         $content.='
             <a class="connexion" href="/index.php/connexion">
                 Connexion
             </a>    
             <a class="inscription" href="/index.php/inscription">
                 Inscription
-            </a>
-            <br>
-        
+            </a>';
+            }
+        $content.='<br>        
             <a class="neon" href="/index.php/listes">
                 Afficher Listes
             </a>

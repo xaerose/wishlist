@@ -60,10 +60,7 @@ class VueParticipant
                          ';
         } else {
             $affichage = '
-                            <form action="#" method="post">
-                                <div class="form">
-                                       <input class="form-control" name="nom" placeholder="Réserver un item">                  
-                                    </div>
+                            <form action="#" method="post">                                
                                     <button class="btn btn-primary">Réserver</button>
                                 </form>
                             ';

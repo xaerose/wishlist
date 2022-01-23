@@ -1,10 +1,12 @@
 <?php
 
 namespace mywishlist\vues;
+use Slim\Container;
 
 class VueConnexion{
 
     public array $tab;
+    public Container $container;
 
     public function __construct(array $tab) {
         $this->tab=$tab;
@@ -19,11 +21,11 @@ class VueConnexion{
         <div class="contenu">        
             <form method="POST" action="/index.php/connexion">
                 <div>               
-                    <label class="neon">Adresse e-mail</label>                    
-                    <input type="email" name="email" placeholder="Email">
+                    <label class="neon" >Adresse e-mail</label>                    
+                    <input type="email" name="email" placeholder="Email" autocomplete="off">
 
                     <label class="neon">Mot de passe</label>                    
-                    <input type="password" name="password" placeholder="Mot de passe">                   
+                    <input type="password" name="password" placeholder="Mot de passe" autocomplete="off">                   
                     
                     <button type="submit" name="submit" class="neon" >Se connecter</button>                  
                 </div>
@@ -54,9 +56,10 @@ class VueConnexion{
                     <input type="password" name="password" placeholder="Mot de passe" autocomplete="off">
 
                     <label class="neon"> Confirmation mdp</label>                    
-                    <input type="password" name="password_retype" placeholder="Confirmer votre mot de passe" autocomplete="off">
+                    <input type="password" name="password_retype" placeholder="Confirmer votre mot de passe" autocomplete="off">                    
                     
-                    <button type="submit" name="submit" class="neon" >S inscrire</button>
+                    <button type="submit" name="submit" class="neon" >S inscrire</button>                  
+            </a>    
                 </div>                
             </form>
              <br><br> 
