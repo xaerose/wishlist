@@ -8,7 +8,6 @@ class VueModificationListe
 
     public function __construct(array $tab) {
         $this->tab=$tab;
-        //echo $tab;
     }
 
     
@@ -51,7 +50,7 @@ class VueModificationListe
         <link rel="stylesheet" href="/style/styleListeFinalisee.css">
         <div class = "container">
         <div class = "titre">
-            La liste a bien été modifié !
+            La liste a bien été modifiée !
         </div>
     </div>';
         return $content;

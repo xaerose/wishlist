@@ -1,19 +1,21 @@
 <?php
 
 namespace mywishlist\vues;
+use \slim\Container;
+
 
 class VueCreationListe{
 
     public array $tab;
+    public Container $container;
 
-    public function __construct(array $tab) {
-        $this->tab=$tab;
+    public function __construct(array $tab, Container $container) {
+        $this->tab = $tab;
+        $this->container = $container;
     }
 
     public function creerListePage(){
-        $content='';
-        $content.=
-        '
+        return '
         <link rel="stylesheet" href="/style/stylecreationliste.css">
         <div class = "container">
     <div class = "titre">
@@ -33,18 +35,18 @@ class VueCreationListe{
                 <input type="date" name="expiration" min="2022-01-17"/>
             </div>	
 
-            <button type="submit" class="creerListe">Créer la liste</button>				
+            <button name="submit" type="submit" class="creerListe" value = "boutonCreer">Créer la liste</button>				
         </form>			
     </div>
     </div>';
-        return $content;
     }
-	
 
-	 public function afficherCreationFin(){
+
+    public function afficherCreationFin(){
         $content='';
+        $content='<br><a href="/index.php/home" class="neon">Retour à l\'accueil</a>';
         $content.=
-		'
+            '
         <link rel="stylesheet" href="/style/styleListeFinalisee.css">
         <div class = "container">
         <div class = "titre">

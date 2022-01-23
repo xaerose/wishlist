@@ -3,6 +3,7 @@
 namespace mywishlist\vues;
 
 use Illuminate\Contracts\Validation\Validator;
+use mywishlist\models\Commentaire;
 
 class VueParticipant
 {
@@ -36,17 +37,20 @@ class VueParticipant
         $content.="</ul>";
         $content.='<a href="/index.php/modifList/$token" class="btn btn-primary">Modifier</a>';
         $content.="<br><p>Insérer un message</p>";
-        $content.='<form method="POST">
+        $content.='<form method="POST" action="/index.php/liste/'.$l['no'].'">
         <div id = "message">
-                <input type="text" name="Message" placeholder="Message" required/>
+                <input type"text" name="Message" placeholder="Message" required/>
         </div>
-        <button type="submit" class="creerMessage">Envoyer le message</button>
+        <button type="submit" class="creerMessage" value="creerMessage" >Envoyer le message</button>
         </form>';
-        return $content;
-    }
 
-    private function ecrireMessage() : string {
-        $content='';
+        $content.='<br>Commentaires :';
+        $row = Commentaire::select('auteur','commentaire','dateCom')->where('no', '=', $l['no'])->get();
+
+        foreach($row as $com){
+            $content .="<article>Auteur : $com[auteur] a écrit : $com[commentaire] | $com[dateCom]</article>";
+        }
+        return $content;
     }
 
     private function htmlUnItem() : string {

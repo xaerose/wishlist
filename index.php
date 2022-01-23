@@ -90,6 +90,9 @@ $app->post('/item/{id}', function ($rq, $rs, $args) {
     return $c->afficherUnItem($rq, $rs, $args);
 })->setName('affUnItem');
 
+$app->post('/liste/{token}','\mywishlist\controleur\ControlleurAffichage:creerMessage')->setName('creationMessageEnd');
+
+
 //affichage creation d'un item
 $app->get('/createItem', '\mywishlist\controleur\ControlleurCreationItem:afficherPageCreationItem')->setName('creerItem');
 
@@ -115,6 +118,11 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 })->setName('afficherFinCreationItem');
 
 /*****************************************************/
+//affichage de la page : creation de liste
+$app->get('/createList', '\mywishlist\controleur\ControlleurCreationListe:afficherPageCreationListe')->setName('creerListe');
+
+$app->post('/createListEnd', '\mywishlist\controleur\ControlleurCreationListe:afficherCreationFinalisee')->setName('creerListeFinalisee');
+/*****************************************************/
 $app->get('/suppItem', '\mywishlist\controleur\ControlleurSuppresionItem:afficherPageSuppresionItem')->setName('supprimerItem');
 
 $app->map(['GET', 'POST'], '/supprimerItemFin', function ($rq, $rs, $args) {
@@ -133,36 +141,6 @@ $app->map(['GET', 'POST'], '/supprimerItemFin', function ($rq, $rs, $args) {
 
 
 })->setName('afficherFinCreationItem');
-
-
-/*****************************************************/
-
-//affichage de la page : creation de liste
-$app->get('/createList', '\mywishlist\controleur\ControlleurCreationListe:afficherPageCreationListe')->setName('creerListe');
-
-
-$app->map(['GET', 'POST'], '/createListEnd', function ($rq, $rs, $args) {
-    // recuperation des variables POST a inserer
-
-    //TODO verification de possible injection HTML
-    $listName = $_POST["listName"];
-    $description = $_POST["description"];
-    $expiration = $_POST["expiration"];
-
-    // creation de la nouvelle liste
-    $listInsertion = new Liste();
-    // TODO creation d un token
-    $listInsertion->titre = $listName;
-    $listInsertion->description = $description;
-    $listInsertion->expiration = $expiration;
-    $listInsertion->save();
-
-    // récupère les différentes valeurs et crée une liste
-    $control = new \mywishlist\controleur\ControlleurCreationListe($this);
-    return $control->afficherCreationFinalisee($rq, $rs, $args);
-
-
-})->setName('afficherCreationListeFinalisee');
 
 /*****************************************************/
 
