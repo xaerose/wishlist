@@ -112,6 +112,11 @@ $app->map(['GET', 'POST'], '/supprimerItemFin', function ($rq, $rs, $args) {
 
     $idSuppression = $_POST["idItemSupp"];
 	
+	$item = Item::where('id', $idSuppression)->first(); // File::find($id)
+
+	if($item) {
+		$item->delete();
+	}
 
     // récupérer les différentes valeurs et crée un item avec
     $control = new \mywishlist\controleur\ControlleurSuppresionItem($this);

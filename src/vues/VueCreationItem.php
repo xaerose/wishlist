@@ -52,7 +52,7 @@ class VueCreationItem{
         </div>
 		
 		<div class = "contenu">
-			<form action="/index.html" method="GET">
+			<form action="/index.php/home" method="GET">
 				<button type="submit" class"boutonAjouter">Revenir à l accueil</button>
 			</form>
 		</div>
