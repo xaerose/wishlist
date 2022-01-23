@@ -22,7 +22,7 @@ class VueSupprimerItem{
         <div class = "contenu">
             <form action="/index.php/supprimerItemFin" method="POST">
                 <div id = "texte">
-                    <input type="text" name="idItemSupp" placeholder="ID de l item" required/>
+                    <input type="text" name="idItemSupp" placeholder="ID de l\'item" required/>
                 </div>
 				
 				
@@ -39,12 +39,12 @@ class VueSupprimerItem{
 		'
     <div class = "container">
         <div class = "titre">
-            L item a été supprimé de la base de données.
+            L\'item a été supprimé de la base de données.
         </div>
 		
 		<div class = "contenu">
 			<form action="/index.php/home" method="GET">
-				<button type="submit" class"boutonAjouter">Revenir à l accueil</button>
+				<button type="submit" class"boutonAjouter">Revenir à l\'accueil</button>
 			</form>
 		</div>
 

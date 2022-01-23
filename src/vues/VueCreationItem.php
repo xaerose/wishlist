@@ -17,12 +17,12 @@ class VueCreationItem{
         <link rel="stylesheet" href="/style/stylecreationliste.css">
         <div class = "container">
         <div class = "titre">
-            Création d un item
+            Création d\'un item
         </div>
         <div class = "contenu">
             <form action="/index.php/createItemFin" method="POST">
                 <div id = "texte">
-                    <input type="text" name="nomItem" placeholder="Nom de l item" required/>
+                    <input type="text" name="nomItem" placeholder="Nom de l\'item" required/>
                 </div>
                 <div id = "description">
                     <input type="text" name="description" placeholder="Description" required/>
@@ -48,12 +48,12 @@ class VueCreationItem{
 		'
     <div class = "container">
         <div class = "titre">
-            L item a été inséré à la base de données.
+            L\'item a été inséré à la base de données.
         </div>
 		
 		<div class = "contenu">
 			<form action="/index.php/home" method="GET">
-				<button type="submit" class"boutonAjouter">Revenir à l accueil</button>
+				<button type="submit" class"boutonAjouter">Revenir à l\'accueil</button>
 			</form>
 		</div>
 
