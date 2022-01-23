@@ -13,5 +13,14 @@ Compte:
 
 
 Tableau de bord:
+Tolga BEYLIK : Connexion, Deconnexion, Inscription, Reservation d'un item, 
+Paul ADNET: Création Liste, Ajout message
+Loïc BLANCHARD : Ajouter un item, Supprimer un item
+Antonin RUDONI : 
+Alexandre GERMONVILLE-BELLET: Afficher Liste, Afficher Item
+
+Base de données :
+Afin d'avoir toutes les fonctionnalités il faut modifier la base de données avec celle présente dans le dossier "database".
+
 
 Niveau de realisation du projet:
