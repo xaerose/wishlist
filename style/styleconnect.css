@@ -8,6 +8,8 @@ body{
 span{
     position: center;
     color: white;
+    display: flex;
+    margin: auto;
 }
 
 *{

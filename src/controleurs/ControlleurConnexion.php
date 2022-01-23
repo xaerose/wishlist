@@ -151,6 +151,8 @@ class ControlleurConnexion
     public function deconnexion(Request $request, Response $rs):Response
     {
         session_destroy(); // on détruit la/les session(s)
+        unset($_SESSION);
+        session_start();
         return $rs->withRedirect('/index.php/home');
     }
 

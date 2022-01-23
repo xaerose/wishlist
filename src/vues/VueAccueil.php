@@ -18,7 +18,7 @@ class VueAccueil
         $token = $this->tab[0]['token'];
         if($_SESSION['user']!=-1){
             $content.='<form method="POST" action="/index.php/deconnexion">
-                 <a class="deconnexion" href="/index.php/home">
+                 <a class="deconnexion" href="/index.php/deconnexion">
                      <button type="submit" name="submit" class="neon" href="/index.php/home" >Deconnexion</button>         
                 </a>
              </form> ';

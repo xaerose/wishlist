@@ -61,7 +61,10 @@ $app->get('/inscription','\mywishlist\controleur\ControlleurConnexion:afficherPa
 $app->post('/inscription','\mywishlist\controleur\ControlleurConnexion:verifierInscription')->setName('verifierInscription');
 
 //route gerant la deconnexion
-$app->post('/deconnexion','\mywishlist\controleur\ControlleurConnexion:deconnexion')->setName('deconnexion');
+//$app->post('/deconnexion','\mywishlist\controleur\ControlleurConnexion:deconnexion')->setName('deconnexion');
+
+$app->any('/deconnexion','\mywishlist\controleur\ControlleurConnexion:deconnexion')->setName('deconnexion');
+
 
 //route verifiant la connexion
 $app->post('/connexion','\mywishlist\controleur\ControlleurConnexion:verifierConnexion')->setName('verifierConnexion');
@@ -69,8 +72,14 @@ $app->post('/connexion','\mywishlist\controleur\ControlleurConnexion:verifierCon
 //l'affichage de la liste des items d'une liste de souhaits
 $app->get('/liste/{token}', \mywishlist\controleur\ControlleurAffichage::class.':afficherUneListe')->setName('affUneListe');
 
-//l'affichage d'un item désignée par son id
 
+//route gerant la reservation
+$app->post('/item/{id}/reserver', function ($rq, $rs, $args) {
+    $c = new \mywishlist\controleur\ControlleurAffichage($this);
+    return $c->verifierReservation($rq, $rs, $args);
+})->setName('reserverItem');
+
+//l'affichage d'un item désignée par son id
 $app->get('/item/{id}', function ($rq, $rs, $args) {
     $c = new \mywishlist\controleur\ControlleurAffichage($this);
     return $c->afficherUnItem($rq, $rs, $args);

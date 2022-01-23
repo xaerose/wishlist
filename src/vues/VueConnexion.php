@@ -15,7 +15,7 @@ class VueConnexion{
     public function connecter(){        
         $content='';
         $content.='<div class="container">
-        <span style="color:white;">'.$this->tab[0]->getQueryParam("res").'</span>
+        <span class="neon" style="color:white;">'.$this->tab[0]->getQueryParam("res").'</span>
         <div class="bg-img"></div>
         <h1 class="neon">Connexion</h1>
         <div class="contenu">        

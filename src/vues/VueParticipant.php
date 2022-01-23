@@ -60,7 +60,7 @@ class VueParticipant
                          ';
         } else {
             $affichage = '
-                            <form action="#" method="post">                                
+                             <form method="POST" action="/index.php/item/'.$item['id'].'/reserver">                                
                                     <button class="btn btn-primary">Réserver</button>
                                 </form>
                             ';
