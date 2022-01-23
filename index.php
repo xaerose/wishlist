@@ -24,6 +24,9 @@ require 'src/vues/VueCreationListe.php';
 require 'src/controleurs/ControlleurModificationListe.php';
 require 'src/vues/VueModificationListe.php';
 
+require 'src/controleurs/ControlleurSuppresionItem.php';
+require 'src/vues/VueSupprimerItem.php';
+
 session_start();
 
 if(!isset($_SESSION['user'])){
@@ -101,6 +104,22 @@ $app->map(['GET', 'POST'], '/createItemFin', function ($rq, $rs, $args) {
 
 
 })->setName('afficherFinCreationItem');
+
+/*****************************************************/
+$app->get('/suppItem', '\mywishlist\controleur\ControlleurSuppresionItem:afficherPageSuppresionItem')->setName('supprimerItem');
+
+$app->map(['GET', 'POST'], '/supprimerItemFin', function ($rq, $rs, $args) {
+
+    $idSuppression = $_POST["idItemSupp"];
+	
+
+    // récupérer les différentes valeurs et crée un item avec
+    $control = new \mywishlist\controleur\ControlleurSuppresionItem($this);
+    return $control->afficherFinSuppressionItem($rq, $rs, $args);
+
+
+})->setName('afficherFinCreationItem');
+
 
 /*****************************************************/
 

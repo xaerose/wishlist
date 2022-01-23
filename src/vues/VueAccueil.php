@@ -54,6 +54,10 @@ class VueAccueil
             <br>
             <a class="neon" href="/index.php/createList">
                 Cr&eacute;er une liste
+            </a>
+			<br>
+            <a class="neon" href="/index.php/suppItem">
+                Supprimer un item
             </a>';
             return $content;
     }
