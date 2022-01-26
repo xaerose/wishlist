@@ -1,6 +1,6 @@
 MyWishList
 
-Lien WebEtu: 
+Lien WebEtu: https://webetu.iutnc.univ-lorraine.fr/www/beylik1u/mywishlist/home
 
 Membres: 
 Tolga BEYLIK
